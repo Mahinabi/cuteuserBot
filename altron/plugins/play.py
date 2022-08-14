@@ -71,7 +71,7 @@ async def play(client, m: Message):
                 # await m.reply_to_message.delete()
                 await m.reply_text(f"""
 **⃣ 𝑺𝒐𝒏𝒈 𝒊𝒏 𝒒𝒖𝒆𝒖𝒆 𝒕𝒐 {pos}
-🎵 𝑶𝒏 𝒓𝒆𝒒𝒖𝒆𝒔𝒕 {m.from_user.mention}**
+🎵 ᴏɴ ʀᴇǫᴜᴇsᴛ  {m.from_user.mention}**
 """,
                 )
             else:
@@ -87,35 +87,35 @@ async def play(client, m: Message):
                 await huehue.delete()
                 # await m.reply_to_message.delete()
                 await m.reply_text(f"""
-**▶️ 𝑺𝒕𝒂𝒓𝒕𝒆𝒅 𝒑𝒍𝒂𝒚𝒊𝒏𝒈 𝒔𝒐𝒏𝒈
-🎵 𝑶𝒏 𝒓𝒆𝒒𝒖𝒆𝒔𝒕 {m.from_user.mention}**
+**▶️ Sᴛᴀʀᴛᴇᴅ ᴘʟᴀʏɪɴɢ sᴏɴɢ
+🎵 ᴏɴ ʀᴇǫᴜᴇsᴛ {m.from_user.mention}**
 """,
                 )
 
     else:
         if len(m.command) < 2:
-            await m.reply("💫 𝑹𝒆𝒑𝒍𝒚 𝒕𝒐 𝒂𝒏 𝒂𝒖𝒅𝒊𝒐 𝒇𝒊𝒍𝒆 𝒐𝒓 𝒑𝒓𝒐𝒗𝒊𝒅𝒆 𝒔𝒐𝒎𝒆𝒕𝒉𝒊𝒏𝒈 𝒇𝒐𝒓 𝒔𝒆𝒂𝒓𝒄𝒉")
+            await m.reply("💫 Rᴇᴘʟʏ ᴛᴏ ᴀɴ ᴀᴜᴅɪᴏ ғɪʟᴇ ᴏʀ ᴘʀᴏᴠɪᴅᴇ sᴏᴍᴇᴛʜɪɴɢ ғᴏʀ sᴇᴀʀᴄʜ")
         else:
             await m.delete()
-            huehue = await m.reply("🔎 𝑺𝒆𝒂𝒓𝒄𝒉𝒊𝒏𝒈...")
+            huehue = await m.reply("🔎")
             query = m.text.split(None, 1)[1]
             search = ytsearch(query)
             if search == 0:
-                await huehue.edit("`❌ 𝑭𝒐𝒖𝒏𝒅 𝒏𝒐𝒕𝒉𝒊𝒏𝒈 `")
+                await huehue.edit("`❌ Fᴏᴜɴᴅ ɴᴏᴛʜɪɴɢ `")
             else:
                 songname = search[0]
                 url = search[1]
                 hm, ytlink = await ytdl(url)
                 if hm == 0:
-                    await huehue.edit(f"**𝒀𝑻𝑫𝑳 𝑬𝒓𝒓𝒐𝒓... ⚠️** \n\n`{ytlink}`")
+                    await huehue.edit(f"**Yᴛ ᴅʟ ᴇʀʀᴏʀ... ⚠️** \n\n`{ytlink}`")
                 else:
                     if chat_id in QUEUE:
                         pos = add_to_queue(chat_id, songname, ytlink, url, "Audio", 0)
                         await huehue.delete()
                         # await m.reply_to_message.delete()
                         m.reply_text(f"""
-**⃣ 𝑨𝒅𝒅𝒆𝒅 𝒊𝒏 𝒒𝒖𝒆𝒖𝒆 𝒂𝒕 {pos}
-🎵 𝑶𝒏 𝒓𝒆𝒒𝒖𝒆𝒔𝒕 {m.from_user.mention}**
+ᴀᴅᴅᴇᴅ ɪɴ ǫᴜᴇᴜᴇ ᴀᴛ {pos}
+🎵 ᴏɴ ʀᴇǫᴜᴇsᴛ {m.from_user.mention}**
 """,
                         )
                     else:
@@ -132,8 +132,8 @@ async def play(client, m: Message):
                             await huehue.delete()
                             # await m.reply_to_message.delete()
                             await m.reply_text(f"""
-**▶️ 𝑺𝒕𝒂𝒓𝒕𝒆𝒅 𝒑𝒍𝒂𝒚𝒊𝒏𝒈 𝒔𝒐𝒏𝒈
-🎵 𝑶𝒏 𝒓𝒆𝒒𝒖𝒆𝒔𝒕 {m.from_user.mention}**
+**▶️ Sᴛᴀʀᴛ ᴘʟᴀʏɪɴɢ sᴏɴɢ
+🎵 Oɴ ʀᴇǫᴜᴇsᴛ {m.from_user.mention}**
 """,
                             )
                         except Exception as ep:
@@ -160,7 +160,7 @@ async def playfrom(client, m: Message):
             limit = 10
             lmt = 9
         await m.delete()
-        hmm = await m.reply(f"**🔎 𝑭𝒆𝒕𝒄𝒉𝒊𝒏𝒈 {limit} 𝒓𝒂𝒏𝒅𝒐𝒎 𝒔𝒐𝒏𝒈𝒔 𝒇𝒓𝒐𝒎 {chat}**")
+        hmm = await m.reply(f"**🔎 Fᴇᴛᴄʜɪɴɢ {limit}ʀᴀɴᴅᴏᴍ sᴏɴɢs ғʀᴏᴍ {chat}**")
         try:
             async for x in client.search_messages(chat, limit=limit, filter="audio"):
                 location = await x.download()
@@ -180,16 +180,16 @@ async def playfrom(client, m: Message):
                     add_to_queue(chat_id, songname, location, link, "Audio", 0)
                     # await m.reply_to_message.delete()
                     await m.reply_text(f"""
-**▶️ 𝑺𝒕𝒂𝒓𝒕𝒆𝒅 𝒑𝒍𝒂𝒚𝒊𝒏𝒈 𝒔𝒐𝒏𝒈𝒔 𝒇𝒓𝒐𝒎 {chat}
-🎵 𝑶𝒏 𝒓𝒆𝒒𝒖𝒆𝒔𝒕 {m.from_user.mention}**
+**▶️ Sᴛᴀʀᴛᴇᴅ ᴘʟᴀʏɪɴɢ sᴏɴɢs ғʀᴏᴍ {chat}
+🎵 Oɴ ʀᴇǫᴜᴇsᴛ {m.from_user.mention}**
 """,
                     )
             await hmm.delete()
             await m.reply(
-                f"➕ 𝑨𝒅𝒅𝒊𝒏𝒈 {lmt} 𝒔𝒐𝒏𝒈𝒔 𝒊𝒏𝒕𝒐 𝒒𝒖𝒆𝒖𝒆\n𝒄𝒍𝒊𝒄𝒌 `!playlist` 𝒕𝒐 𝒗𝒊𝒆𝒘 𝒑𝒍𝒂𝒚𝒍𝒊𝒔𝒕"
+                f"➕ Aᴅᴅɪɴɢ {lmt} sᴏɴɢs ɪɴᴛᴏ ǫᴜᴇᴜᴇ\nᴄʟɪᴄᴋ `!playlist` ᴛᴏ ᴠɪᴇᴡ ᴘʟᴀʏʟɪsᴛ "
             )
         except Exception as e:
-            await hmm.edit(f"**𝑬𝒓𝒓𝒐𝒓....** \n`{e}`")
+            await hmm.edit(f"**Eʀʀᴏʀ....** \n`{e}`")
 
 
 @client.on_message(commandpro(["/pl", "/playlist", "!playlist", "!pl", "pl", "/queue"]))
@@ -202,11 +202,11 @@ async def playlist(client, m: Message):
         if len(chat_queue) == 1:
             await m.delete()
             await m.reply(
-                f"**🎵 𝑵𝒐𝒘 𝑷𝒍𝒂𝒚𝒊𝒏𝒈** \n[{chat_queue[0][0]}]({chat_queue[0][2]}) | `{chat_queue[0][3]}`",
+                f"**🎵 Nᴏᴡ ᴘʟᴀʏɪɴɢ** \n[{chat_queue[0][0]}]({chat_queue[0][2]}) | `{chat_queue[0][3]}`",
                 disable_web_page_preview=True,
             )
         else:
-            QUE = f"**🎵 𝑵𝒐𝒘 𝑷𝒍𝒂𝒚𝒊𝒏𝒈** \n[{chat_queue[0][0]}]({chat_queue[0][2]}) | `{chat_queue[0][3]}` \n\n**⏯️ 𝑸𝒖𝒆𝒖𝒆 𝑳𝒊𝒔𝒕**"
+            QUE = f"**🎵 Nᴏᴡ ᴘʟᴀʏɪɴɢ** \n[{chat_queue[0][0]}]({chat_queue[0][2]}) | `{chat_queue[0][3]}` \n\n**⏯️ Qᴜᴇᴜᴇ ʟɪsᴛ**"
             l = len(chat_queue)
             for x in range(1, l):
                 hmm = chat_queue[x][0]
@@ -215,4 +215,4 @@ async def playlist(client, m: Message):
                 QUE = QUE + "\n" + f"**#{x}** - [{hmm}]({hmmm}) | `{hmmmm}`\n"
             await m.reply(QUE, disable_web_page_preview=True)
     else:
-        await m.reply("**❌ 𝑫𝒐𝒆𝒔𝒏'𝒕 𝒑𝒍𝒂𝒚 𝒂𝒏𝒚𝒕𝒉𝒊𝒏𝒈**")
+        await m.reply("**❌ ᴅᴏᴇsɴ'ᴛ ᴘʟᴀʏ ᴀɴʏᴛʜɪɴɢ**")

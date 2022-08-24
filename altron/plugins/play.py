@@ -45,7 +45,7 @@ async def ytdl(link):
         return 0, stderr.decode()
 
 
-@client.on_message(commandpro(["!play", "/p", "!p", "$p", "/play", "P", "Play"]))
+@client.on_message(commandpro(["!play", "/p", "!p", "$p", "P", "Play"]))
 @errors
 @sudo_users_only
 async def play(client, m: Message):

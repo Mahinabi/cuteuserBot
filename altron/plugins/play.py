@@ -46,8 +46,11 @@ async def ytdl(link):
 
 
 @client.on_message(commandpro(["!play", "/p", "!p", "$p", "P", "Play"]))
-@errors
-@sudo_users_only
+    & filters.group
+    & ~filters.edited
+    & ~filters.forwarded
+    & ~filters.via_bot
+
 async def play(client, m: Message):
     replied = m.reply_to_message
     chat_id = m.chat.id
